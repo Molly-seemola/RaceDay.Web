@@ -1,0 +1,65 @@
+﻿@using System.Text.Json
+@{
+    ViewData["Title"] = "Upcoming Events";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Upcoming Events</h2>
+    </div>
+    
+    <!-- Display error if the API failed -->
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    
+    <!-- Display error if enrolling failed -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-warning">@TempData["Error"]</div>
+    }
+
+    <div class="row">
+        <!-- Check if Model is not null and has items before looping -->
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var ev in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <!-- Show image if it exists -->
+                        @if (ev.GetProperty("imageUrl").ValueKind == JsonValueKind.String && ev.GetProperty("imageUrl").GetString() != null)
+                        {
+                            <img src="@ev.GetProperty("imageUrl").GetString()" class="card-img-top" style="height:200px; object-fit:cover;" alt="Event Banner" />
+                        }
+                        else
+                        {
+                            <div class="bg-secondary text-white text-center d-flex align-items-center justify-content-center" style="height:200px;">
+                                <h3>🏃 RaceDay</h3>
+                            </div>
+                        }
+                        
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">@ev.GetProperty("name").GetString()</h5>
+                            <p class="card-text text-muted mb-1">📍 @ev.GetProperty("location").GetString()</p>
+                            <p class="card-text mb-3">📅 @ev.GetProperty("eventDate").GetDateTime().ToShortDateString()</p>
+                            
+                            <div class="mt-auto">
+                                <!-- This link takes you to the EventDetails page where you pick a category -->
+                                <a asp-action="EventDetails" asp-route-id="@ev.GetProperty("eventId").GetInt32()" class="btn btn-primary w-100 fw-bold">View Event & Enter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12 text-center mt-5">
+                <h4 class="text-muted">No events found.</h4>
+                <p>Make sure your API is running and you have created some events.</p>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@using System.Text.Json
+@{
+    ViewData["Title"] = "My Enrolments";
+}
+
+<div class="container mt-4">
+    <h2>My Enrolments</h2>
+    <hr />
+
+    @if (Model == null || Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            You haven't entered any events yet. <a asp-action="Index">Browse events here!</a>
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Bib Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var enr in Model)
+                {
+                    <tr>
+                        <td class="fw-bold">@enr.GetProperty("eventName").GetString()</td>
+                        <td>@enr.GetProperty("eventDate").GetDateTime().ToShortDateString()</td>
+                        <td>@enr.GetProperty("categoryName").GetString()</td>
+                        <td>
+                            <!-- Color code the status -->
+                            @{
+                                var status = enr.GetProperty("status").GetString();
+                                var badgeClass = status == "Confirmed" ? "bg-success" : (status == "Pending" ? "bg-warning text-dark" : "bg-secondary");
+                            }
+                            <span class="badge @badgeClass">@status</span>
+                        </td>
+                        <td>
+                            @if (enr.GetProperty("bibNumber").ValueKind != JsonValueKind.Null)
+                            {
+                                <span class="badge bg-primary">#@enr.GetProperty("bibNumber").GetInt32()</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Not assigned</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
