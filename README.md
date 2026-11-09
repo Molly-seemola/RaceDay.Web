@@ -99,6 +99,10 @@ Run docker ps to confirm both containers are running successfully (Status: Up).
 The repository is configured with a GitHub Actions workflow located in .github/workflows/dotnet.yml.
 
 What it does: Every time code is pushed to the main or master branch, the workflow automatically provisions a .NET 10 environment, restores NuGet packages, builds both the API and the MVC projects, and runs the unit tests.
+here is a screenshort of my CI/CD showing that it runs
+<img width="1365" height="718" alt="Screenshot 2026-11-09 194732 - Copy" src="https://github.com/user-attachments/assets/c83ad921-abf4-487d-adbc-c9cf19ebd343" />
+
+
 
 Status:
 https://github.com/Molly-seemola/RaceDay.Web
