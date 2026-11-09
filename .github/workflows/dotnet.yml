@@ -1,0 +1,36 @@
+name: .NET Build and Test
+
+on:
+  push:
+    branches: [ "master", "main" ]
+  pull_request:
+    branches: [ "master", "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET 10
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '10.0.x'
+
+    - name: Find Solution File
+      id: find-sln
+      run: |
+        SLN_PATH=$(find . -name "*.sln" | head -n 1)
+        echo "Found solution at: $SLN_PATH"
+        echo "sln_path=$SLN_PATH" >> $GITHUB_OUTPUT
+
+    - name: Restore dependencies
+      run: dotnet restore "${{ steps.find-sln.outputs.sln_path }}"
+
+    - name: Build Solution (API + Web)
+      run: dotnet build "${{ steps.find-sln.outputs.sln_path }}" --no-restore --configuration Release
+
+    - name: Run Unit Tests
+      run: dotnet test "${{ steps.find-sln.outputs.sln_path }}" --no-build --configuration Release --verbosity normal
