@@ -1,13 +1,13 @@
 # 🏃 RaceDay – Portfolio of Evidence Part 3 (MVC Web Application)
 
-## 📖 1. Project Overview
+##  1. Project Overview
 RaceDay is a comprehensive, full-stack event management system designed specifically for the South African road running, walking, and cycling community. 
 
 **Part 3** represents the final, user-facing layer of the application. It is a fully functional **ASP.NET Core MVC Web Application** that consumes the RESTful API built in Part 2. It provides a polished, secure, and role-aware interface for both Event Organisers and Participants, complete with session-based authentication, image handling, and Docker containerisation.
 
 ---
 
-## ⚠️ 2. CRITICAL: How to Run This Project
+##  2. CRITICAL: How to Run This Project
 **This MVC Web Application relies entirely on the Part 2 API to function.** The website does not connect to a database directly; it sends HTTP requests to the API.
 
 To run this project successfully, you **MUST follow this exact order**:
@@ -23,7 +23,7 @@ To run this project successfully, you **MUST follow this exact order**:
 
 ---
 
-## 🔐 3. Authentication & Role-Based Access
+##  3. Authentication & Role-Based Access
 
 ### Session Management
 - When a user logs in, the API returns a secure session cookie (`.RaceDay.Auth`).
@@ -45,7 +45,7 @@ To run this project successfully, you **MUST follow this exact order**:
 
 ---
 
-## 🏗️ 4. Architecture & Code Structure
+##  4. Architecture & Code Structure
 
 The project follows the MVC (Model-View-Controller) architectural pattern and **strictly enforces the separation of concerns**:
 
@@ -56,7 +56,7 @@ The project follows the MVC (Model-View-Controller) architectural pattern and **
 
 ---
 
-## 🚀 5. Key Features Implemented
+##  5. Key Features Implemented
 
 ### Organiser Dashboard
 - **Event Management:** Create new events with names, descriptions, dates, locations, distances, and event types (Running, Walking, Cycling).
@@ -71,7 +71,7 @@ The project follows the MVC (Model-View-Controller) architectural pattern and **
 
 ---
 
-## 🐳 6. Docker Setup & Containerisation
+##  6. Docker Setup & Containerisation
 
 Both the API and the Web Application have been containerised using Docker. 
 
@@ -95,7 +95,7 @@ docker run -d -p 7015:80 --name raceday-web-container raceday-web
 Step 3: Verify Containers
 Run docker ps to confirm both containers are running successfully (Status: Up).
 
-🔄 7. CI/CD Pipeline
+7. CI/CD Pipeline
 The repository is configured with a GitHub Actions workflow located in .github/workflows/dotnet.yml.
 
 What it does: Every time code is pushed to the main or master branch, the workflow automatically provisions a .NET 10 environment, restores NuGet packages, builds both the API and the MVC projects, and runs the unit tests.
@@ -106,8 +106,8 @@ https://github.com/Molly-seemola/Race-dayDB-PROG-1/actions/workflows/dotnet.yml/
 (Attach your green build screenshot below)
 https://docs/ci-cd-screenshot-part3.png
 
-🎥 8. Video Presentation
-📺 Watch the Part 3 Walkthrough on YouTube
+ 8. Video Presentation
+ Watch the Part 3 Walkthrough on YouTube
 
 The video covers:
 
@@ -121,7 +121,7 @@ Code explanation (ApiService, Session management, Role-based layout).
 
 Docker build and run demonstration.
 
-📁 9. Repository Structure
+ 9. Repository Structure
 text
 Race-dayDB-PROG-1/
 │
@@ -139,7 +139,7 @@ Race-dayDB-PROG-1/
 ├── docs/                     # ERD, SQL Script, CI/CD Screenshots
 ├── .github/workflows/        # CI/CD Pipeline
 └── README.md                 # Project Documentation
-👨‍💻 10. Student Information
+10. Student Information
 Student Name: Molly Seemola
 
 Project: RaceDay - Full Stack Event Management System
