@@ -20,7 +20,7 @@ To run this project successfully, you **MUST follow this exact order**:
    - Once the API is running, open the `RaceDay.Web` project.
    - Press **F5** to run it.
 3. **Important:** If you run the Web App without the API running, the website will load, but logging in or fetching events will fail with a "Could not connect to the API" error.
-
+here is a link for RaceDay part 2 link :https://github.com/Molly-seemola/RaceDay.API for you to run API and WEB at the same time.
 ---
 
 ##  3. Authentication & Role-Based Access
@@ -101,10 +101,9 @@ The repository is configured with a GitHub Actions workflow located in .github/w
 What it does: Every time code is pushed to the main or master branch, the workflow automatically provisions a .NET 10 environment, restores NuGet packages, builds both the API and the MVC projects, and runs the unit tests.
 
 Status:
-https://github.com/Molly-seemola/Race-dayDB-PROG-1/actions/workflows/dotnet.yml/badge.svg
+https://github.com/Molly-seemola/RaceDay.Web
 
-(Attach your green build screenshot below)
-https://docs/ci-cd-screenshot-part3.png
+
 
  8. Video Presentation
  Watch the Part 3 Walkthrough on YouTube
@@ -120,6 +119,7 @@ The Organiser Interface (creating events, capturing results).
 Code explanation (ApiService, Session management, Role-based layout).
 
 Docker build and run demonstration.
+Youtube link : https://youtu.be/cSIRRYmjXa8
 
  9. Repository Structure
 text
@@ -139,12 +139,12 @@ Race-dayDB-PROG-1/
 ├── docs/                     # ERD, SQL Script, CI/CD Screenshots
 ├── .github/workflows/        # CI/CD Pipeline
 └── README.md                 # Project Documentation
-10. Student Information
+10. Student Informationhttps://github.com/Molly-seemola/RaceDay.Web
 Student Name: Molly Seemola
 
 Project: RaceDay - Full Stack Event Management System
 
-Repository: https://github.com/Molly-seemola/Race-dayDB-PROG-1
+Repository: https://github.com/Molly-seemola/RaceDay.Web
 
 Submission: Portfolio of Evidence (Part 3)
 
